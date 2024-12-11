@@ -38,12 +38,16 @@ upgrade: ## Update composer dependencies
 # ================ #
 #      Entity      #
 # ================ #
-validate: ## Create a new Database
-	$(EXEC) $(CONSOLE) doctrine:database:validate
+validate: ## Validate Schema
+	$(EXEC) $(CONSOLE) doctrine:schema:validate
+schema_update: ## Update Schemas
+	$(EXEC) $(CONSOLE) doctrine:schema:update --force --dump-sql
 create_database: ## Create a new Database
 	$(EXEC) $(CONSOLE) d:d:c --if-not-exists
 entity: ## Create a new Symfony entity
 	$(EXEC) $(CONSOLE) make:entity
+user: ## Create a new Symfony entity
+	$(EXEC) $(CONSOLE) make:user
 
 
 test_email:
